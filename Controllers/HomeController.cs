@@ -18,8 +18,28 @@ namespace teoria.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult contacto(){
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult contacto(string nombre_completo, string mensaje){
+            //guardarlo en BD
+            //enviar un correo
+            //no hacer nada
+            Console.WriteLine(nombre_completo);
+            Console.WriteLine(mensaje);
+            return RedirectToAction("ContactoConfirmacion");
+        }
+
+        public IActionResult ContactoConfirmacion(){
+            return View();
+        }
+
+        public IActionResult Index(string mensaje, int n)
         {
+            ViewData["n"] = n;
+            ViewData["mensaje"] = mensaje;
             return View();
         }
 
